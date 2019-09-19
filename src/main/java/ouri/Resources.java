@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ouri.Classes.*;
+
 
 	
 @RestController
@@ -18,13 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 		@GetMapping("/Calculate")
 		@ResponseBody
-		public List<Calculate> getCalc(@RequestParam(value = "hourlyWage") float salary,@RequestParam(value="hoursWorked")
+		public List<CalculateTotalWages> getCalc(@RequestParam(value = "hourlyWage") float salary,@RequestParam(value="hoursWorked")
 		float hours)
 		{
 			
-			List<Calculate> list = new ArrayList<>();
+			List<CalculateTotalWages> list = new ArrayList<>();
 			float total=salary*hours;
-			list.add(new Calculate(salary,hours,total));
+			list.add(new CalculateTotalWages(salary,hours,total));
 			
 			return list;
 
@@ -36,26 +38,9 @@ import org.springframework.web.bind.annotation.RestController;
 		@ResponseBody 
 		public String Calculator(@RequestParam(value = "type") String type,@RequestParam(value = "firstNumber") float a,@RequestParam(value = "secondNumber") float b)
 		{
-			
-			float total = 0;
-			switch (type)
-			{
-			case "add" : 
-			 total = a+b;
-			 break;
-			case "subtract" : 
-				 total = a-b;
-				 break;
-			case "multiply" : 
-				 total = a*b;
-				 break;
-			 
-			case "divide" : 
-				 total = a/b;
-				 break;
-			}
-	
-			
+		
+			Calculator cal = new Calculator(type,a,b);
+			String total = cal.calculate(cal);
 			return "The Answer is " + total;
 		}
 		
@@ -63,35 +48,8 @@ import org.springframework.web.bind.annotation.RestController;
 		@ResponseBody 
 		public List<String> InterestCalculator(@RequestParam(value = "interestRate") float IR,@RequestParam(value = "loanAmount") float loan,@RequestParam(value = "years") int years)
 		{
-			float rateAmount = 0;
-			List<String> list = new ArrayList<>();
-			
-			
-			if (years == 0 || IR == 0 || loan == 0)
-			{
-				list.add("Invalid Entry");
-				
-			}
-			else if (years == 1)
-			{
-				 rateAmount = (IR/100) * loan;
-				 list.add("Interest Rate: " + IR+"%");
-				 list.add("Loan Amount: $" + loan);
-				 list.add("Total Amount Of Years: " + years);
-				 list.add("Total: $" + rateAmount);
-			}
-			else
-			{
-				rateAmount = ((IR/100) * loan) * years;
-				 list.add("Interest Rate: " + IR+"%");
-				 list.add("Loan Amount: $" + loan);
-				 list.add("Total Amount Of Years: " + years);
-				 list.add("Total: $" + rateAmount);
-			}
-			
-			
-			
-	
+			CalculateInterest cal = new CalculateInterest(IR,loan,years);
+			List<String> list = cal.calculate(cal);
 			
 			return list;
 		}
