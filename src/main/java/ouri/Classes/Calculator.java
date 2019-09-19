@@ -11,6 +11,11 @@ public class Calculator {
 		this.secondNumber=secondNumber;
 	}
 	
+	public Calculator()
+	{
+		
+	}
+	
 	
 	public String calculate(Calculator obj)
 	{
@@ -33,6 +38,58 @@ public class Calculator {
 		}
 
 		return "The Answer is " + total;
+	}
+	public String Postcalculate(Calculator obj)
+	{
+		float total = 0;
+		switch (type)
+		{
+		case "add" : 
+		 total = obj.firstNumber+obj.secondNumber;
+		 break;
+		case "subtract" : 
+			 total = obj.firstNumber-obj.secondNumber;
+			 break;
+		case "multiply" : 
+			 total = obj.firstNumber*obj.secondNumber;
+			 break;
+		 
+		case "divide" : 
+			 total = obj.firstNumber/obj.secondNumber;
+			 break;
+		}
+
+		return "The Answer is " + total;
+	}
+
+
+	public float getFirstNumber() {
+		return firstNumber;
+	}
+
+
+	public void setFirstNumber(float firstNumber) {
+		this.firstNumber = firstNumber;
+	}
+
+
+	public float getSecondNumber() {
+		return secondNumber;
+	}
+
+
+	public void setSecondNumber(float secondNumber) {
+		this.secondNumber = secondNumber;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

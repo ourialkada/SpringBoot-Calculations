@@ -12,7 +12,12 @@ public class CalculateInterest {
 		this.loan = loan;
 		this.years = years;
 	}
+	public CalculateInterest()
+	{
+		
+	}
 	
+
 	public List<String> calculate(CalculateInterest obj)
 	{
 		float rateAmount = 0;
@@ -43,5 +48,23 @@ public class CalculateInterest {
 		return list;
 	}
 	
+	public float getIR() {
+		return IR;
+	}
+	public void setIR(float iR) {
+		IR = iR;
+	}
+	public float getLoan() {
+		return loan;
+	}
+	public void setLoan(float loan) {
+		this.loan = loan;
+	}
+	public int getYears() {
+		return years;
+	}
+	public void setYears(int years) {
+		this.years = years;
+	}
 
 }
