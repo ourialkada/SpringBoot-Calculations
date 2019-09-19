@@ -32,7 +32,6 @@ public class Calculator {
 			 break;
 		}
 
-		
 		return "The Answer is " + total;
 	}
 

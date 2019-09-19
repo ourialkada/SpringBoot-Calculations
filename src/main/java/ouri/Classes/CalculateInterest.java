@@ -18,7 +18,6 @@ public class CalculateInterest {
 		float rateAmount = 0;
 		List<String> list = new ArrayList<>();
 		
-		
 		if (obj.years == 0 || obj.IR == 0 || obj.loan == 0)
 		{
 			list.add("Invalid Entry");

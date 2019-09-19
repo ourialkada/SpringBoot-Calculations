@@ -23,14 +23,11 @@ import ouri.Classes.*;
 		public List<CalculateTotalWages> getCalc(@RequestParam(value = "hourlyWage") float salary,@RequestParam(value="hoursWorked")
 		float hours)
 		{
-			
 			List<CalculateTotalWages> list = new ArrayList<>();
 			float total=salary*hours;
 			list.add(new CalculateTotalWages(salary,hours,total));
 			
 			return list;
-
-		
 		}
 		
 		
@@ -38,7 +35,6 @@ import ouri.Classes.*;
 		@ResponseBody 
 		public String Calculator(@RequestParam(value = "type") String type,@RequestParam(value = "firstNumber") float a,@RequestParam(value = "secondNumber") float b)
 		{
-		
 			Calculator cal = new Calculator(type,a,b);
 			String total = cal.calculate(cal);
 			return "The Answer is " + total;
